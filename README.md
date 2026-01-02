@@ -20,7 +20,7 @@ This repository implements 3D object detection for vehicles using PointPillars A
 ### Software Versions (per container)
 본 프로젝트는 센서 드라이버와 추론(AI)을 컨테이너로 분리하여, 실행 안정성 및 재현성을 높임
 
-<mark style='background-color: #0366d6'>**Container A — Velodyne Driver (name: ros_velodyne)**
+<span style="color:green"> 예시1 green </span>**Container A — Velodyne Driver (name: ros_velodyne)**
 - Base Image: 
 - Ubuntu: 20.04
 - ROS: Noetic
@@ -30,7 +30,7 @@ This repository implements 3D object detection for vehicles using PointPillars A
 Publishes:/velodyne_packets, /velodyne_points  
 PointCloud2 fields include x, y, z, intensity, ring, time (point_step=22)
 
-<mark style='background-color: #0366d6'>**Container B — 3D Detection (name: ppdet)**  
+**Container B — 3D Detection (name: ppdet)**  
 ML(machine learning) 스택 궁합을 잘 고려해야함  
 - Base Image: nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
 - CUDA / cuDNN: CUDA 11.8 + cuDNN 8 (nvidia/cuda:11.8.0-cudnn8-devel)
