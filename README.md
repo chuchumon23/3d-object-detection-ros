@@ -27,8 +27,8 @@ This repository implements 3D object detection for vehicles using PointPillars A
 - Packages: velodyne_driver, velodyne_pointcloud
 - Python: (optional / not used for core driver)
 - PyTorch: N/A
-- Notes: Publishes: /velodyne_packets, /velodyne_points
-
+- Notes:
+Publishes: /velodyne_packets, /velodyne_points
 PointCloud2 fields include x, y, z, intensity, ring, time (point_step=22)
 
 **Container B — 3D Detection (ppdet)**
