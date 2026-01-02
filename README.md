@@ -9,8 +9,8 @@ This repository implements 3D object detection for vehicles using PointPillars A
 
 # Environment & Requirements
 ### Hardware
-GPU: NVIDIA RTX 4060 (Laptop)
-Sensor: Veloyne VLP-16(16-chaanel)
+- GPU: NVIDIA RTX 4060 (Laptop)
+- Sensor: Veloyne VLP-16(16-chaanel)
 
 
 ### Host(Laptop)
