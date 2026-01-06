@@ -2,7 +2,7 @@
 This repository implements 3D object detection for vehicles using PointPillars AI algorithm, based on ROS and Docker. It processes 16-channel Velodyne point cloud data as input for real-time 3D vehicle detection.
 
 # Overview
-본 프로젝트는 16채널 Velodyne LiDAR(VLP-16)를 사용하여 포인트 클라우드 데이터를 수집하고,ROS 및 Docker 환경에서 PointPillars 기반 3D 객체 검출을 수행한다.
+This project uses a 16-channel Velodyne LiDAR (VLP-16) to acquire point cloud data and performs PointPillars-based 3D object detection in a ROS and Docker environment.
 
 # Demo
 <img width="856" height="650" alt="image" src="https://github.com/user-attachments/assets/182a40f3-5eb2-48c6-a05e-484b4e11990f" />
@@ -20,7 +20,7 @@ This repository implements 3D object detection for vehicles using PointPillars A
 - Networking: containers communicate via ROS master (host or one container) / host networking recommended
 
 ### Software Versions (per container)
-본 프로젝트는 센서 드라이버와 추론(AI)을 컨테이너로 분리하여, 실행 안정성 및 재현성을 높임
+This project separates the sensor driver and AI inference into different containers to improve runtime stability and reproducibility
 
 **Container A — Velodyne Driver (name: ros_velodyne)**
 - Base Image: osrf/ros:noetic-desktop-full
