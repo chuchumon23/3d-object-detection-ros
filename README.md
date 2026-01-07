@@ -84,12 +84,51 @@ docker run -it -d \
   --net=host \
   --privileged \
   -e DISPLAY=:0 \
-  -v /home/chu/PycharmProjects/PythonProject:/workspace/pycharm_scripts:rw \
   -v /dev:/dev \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
   osrf/ros:noetic-desktop-full \
   /bin/bash
 ```
+Container A uses the official ROS Noetic Docker image and does not require a custom Dockerfile.
+
+- Create container B (ppdet)
+- The Dockerfile is provided to ensure full reproducibility of the ML and ROS environment.
+The Dockerfile used to build the 3D detection container is provided in:
+- docker/ppdet/Dockerfile
+```
+docker run -it -d \
+  --name ppdet \
+  --gpus all \
+  --net=host \
+  --ipc=host \
+  -v ~/ppdet_ws:/workspace \
+  ppdet:b_cu118_noetic
+
+-start container A(ros_velodyne)
+```
+docker start ros_velodyne 
+docker exec -it ros_velodyne bash
+source /opt/ros/noetic/setup.bash
+export ROS_MASTER_URI=http://127.0.0.1:11311
+roslaunch velodyne_pointcloud VLP16_points.launch device_ip:=192.168.1.201
+```
+
+-start container(ppdet)
+```
+docker start ppdet
+docker exec -it ppdet bash
+source /opt/ros/noetic/setup.bash
+export ROS_MASTER_URI=http://127.0.0.1:11311
+export PYTHONPATH=/root/OpenPCDet:$PYTHONPATH
+python3 /workspace/ros_nodes/pp_infer_node.py
+```
+The `pp_infer_node.py` script is included in this repository and implements the PointPillars-based ROS inference pipeline.
+
+
+
+
+
+  
 
 
 
