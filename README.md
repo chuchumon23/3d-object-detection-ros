@@ -131,6 +131,23 @@ python3 /workspace/ros_nodes/pp_infer_node.py
 >The `pp_infer_node.py` script is included in this repository and implements the PointPillars-based ROS inference pipeline.
 
 
+## Configuration
+### 1)ROS Topics 
+- Input (subscribe): /velodyne_points (sensor_msgs/PointCloud2)
+- Output (publish): /ppdet/markers (visualization_msgs/MarkerArray)
+>The detection node subscribes to the incoming point cloud topic and publishes 3D bounding boxes as RViz markers.
+
+### 2)Inference Node Parameters (pp_infer_node.py)
+| Parameter            |                                    Default | Description                                                   |
+| -------------------- | -----------------------------------------: | ------------------------------------------------------------- |
+| `~topic_in`          |                         `/velodyne_points` | Input point cloud topic                                       |
+| `~frame_id`          |                                       `""` | Override marker frame_id (empty = use incoming message frame) |
+| `~score_thr`         |                                      `0.3` | Detection score threshold                                     |
+| `~cfg_file`          | `tools/cfgs/kitti_models/pointpillar.yaml` | OpenPCDet model config                                        |
+| `~ckpt`              |          `pretrained/pointpillar_7728.pth` | Pretrained checkpoint path                                    |
+| `~only_car`          |                                    `false` | If true, publish only `Car` class                             |
+| `~detect_pedestrian` |                                     `true` | Enable `Pedestrian` class                                     |
+| `~detect_cyclist`    |                                     `true` | Enable `Cyclist` class                                        |
 
 
 
