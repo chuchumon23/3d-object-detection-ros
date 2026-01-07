@@ -92,9 +92,8 @@ docker run -it -d \
 Container A uses the official ROS Noetic Docker image and does not require a custom Dockerfile.
 
 - Create container B (ppdet)
-- The Dockerfile is provided to ensure full reproducibility of the ML and ROS environment.
-The Dockerfile used to build the 3D detection container is provided in:
-- docker/ppdet/Dockerfile
+The Dockerfile is provided to ensure full reproducibility of the ML and ROS environment.
+The Dockerfile used to build the 3D detection container is provided in: docker/ppdet/Dockerfile
 ```
 docker run -it -d \
   --name ppdet \
@@ -103,6 +102,7 @@ docker run -it -d \
   --ipc=host \
   -v ~/ppdet_ws:/workspace \
   ppdet:b_cu118_noetic
+```
 
 -start container A(ros_velodyne)
 ```
@@ -122,6 +122,7 @@ export ROS_MASTER_URI=http://127.0.0.1:11311
 export PYTHONPATH=/root/OpenPCDet:$PYTHONPATH
 python3 /workspace/ros_nodes/pp_infer_node.py
 ```
+
 The `pp_infer_node.py` script is included in this repository and implements the PointPillars-based ROS inference pipeline.
 
 
