@@ -74,6 +74,23 @@ This project separates the sensor driver and AI inference into different contain
 <img width="1158" height="710" alt="image" src="https://github.com/user-attachments/assets/80c65eac-8b3f-4117-8a23-b25f5f143c37" />
 
 
+## Quick start
+> This Quickstart describes the minimal steps for running the system assuming a compatible GPU and driver environment.
+
+- Create container A (ros_velodyne)
+```
+docker run -it -d \
+  --name ros_velodyne \
+  --net=host \
+  --privileged \
+  -e DISPLAY=:0 \
+  -v /home/chu/PycharmProjects/PythonProject:/workspace/pycharm_scripts:rw \
+  -v /dev:/dev \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+  osrf/ros:noetic-desktop-full \
+  /bin/bash
+```
+
 
 
 
